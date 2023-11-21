@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        .form-toggle {
+            text-align: center;
+        }
+
+        .form-toggle input[type="radio"] {
+            display: none;
+        }
+
+        .form-toggle label {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .form-toggle input[type="radio"]:checked+label {
+            background-color: #1abc9c;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-toggle">
+            <input type="radio" id="patient" name="userType" checked>
+            <label for="patient">Signup as a Patient</label>
+            <input type="radio" id="doctor" name="userType">
+            <label for="doctor">Signup as a Doctor</label>
+        </div>
+
+        <form id="patient-form">
+            <div class="form-group">
+                <label for="patient-name">Name:</label>
+                <input type="text" id="patient-name" name="patient-name" required>
+            </div>
+            <div class="form-group">
+                <label for="patient-email">Email:</label>
+                <input type="email" id="patient-email" name="patient-email" required>
+            </div>
+            <div class="form-group">
+                <label for="patient-password">Password:</label>
+                <input type="password" id="patient-password" name="patient-password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Signup as a Patient">
+            </div>
+        </form>
+
+        <form id="doctor-form" style="display: none;">
+            <div class="form-group">
+                <label for="doctor-name">Name:</label>
+                <input type="text" id="doctor-name" name="doctor-name" required>
+            </div>
+            <div class="form-group">
+                <label for="doctor-email">Email:</label>
+                <input type="email" id="doctor-email" name="doctor-email" required>
+            </div>
+            <div class="form-group">
+                <label for="doctor-specialty">Specialty:</label>
+                <input type="text" id="doctor-specialty" name="doctor-specialty" required>
+            </div>
+            <div class="form-group">
+                <label for="doctor-password">Password:</label>
+                <input type="password" id="doctor-password" name="doctor-password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Signup as a Doctor">
+            </div>
+        </form>
+    </div>
+    <script>
+        const patientForm = document.getElementById("patient-form");
+        const doctorForm = document.getElementById("doctor-form");
+        const patientRadio = document.getElementById("patient");
+        const doctorRadio = document.getElementById("doctor");
+
+        patientRadio.addEventListener("click", () => {
+            patientForm.style.display = "block";
+            doctorForm.style.display = "none";
+        });
+
+        doctorRadio.addEventListener("click", () => {
+            patientForm.style.display = "none";
+            doctorForm.style.display = "block";
+        });
+    </script>
+</body>
+
+</html>

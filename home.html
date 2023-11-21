@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Patient application</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">DPA</a>
+            <ul class="nav-items">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="data.html">Data</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="message.html">Message</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="Reminders.html">Reminders</a></li>
+                <li class="nav-profile">
+                    <div class="avatar">
+                        <img src="doctor.jpg" alt="">
+                    </div>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout.html">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open_nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close_nav-btn"><i class="uil uil-multiply "></i></button>
+        </div>
+    </nav>
+
+
+    <section class="search-bar">
+        <form action="" method="post" class="container search-bar-container">
+            <div>
+                <i class="uil uil-search"></i>
+                <input type="search" placeholder="search">
+            </div>
+            <button type="submit" class="btn">Go</button>
+        </form>
+    </section>
+
+    <section class="posts">
+        <div class="container posts-container">
+            <article class="post">
+                <div class="post-thumbnail">
+                    <img src="doctor.jpg" alt="">
+                </div>
+                <div class="post-info">
+                    <h3>
+                        <a href="post.html">Dr. John Almasi</a>
+                    </h3>
+                    <a href="" class="category-button">Dentist</a>
+                    <small style="color: white;">2KM away</small>
+                </div>
+            </article>
+            <article class="post">
+                <div class="post-thumbnail">
+                    <img src="doctor.jpg" alt="">
+                </div>
+                <div class="post-info">
+                    <h3>
+                        <a href="post.html">Dr. John Almasi</a>
+                    </h3>
+                    <a href="" class="category-button">Dentist</a>
+                    <small style="color: white;">2KM away</small>
+                </div>
+            </article>
+            <article class="post">
+                <div class="post-thumbnail">
+                    <img src="doctor.jpg" alt="">
+                </div>
+                <div class="post-info">
+                    <h3>
+                        <a href="post.html">Dr. John Almasi</a>
+                    </h3>
+                    <a href="" class="category-button">Dentist</a>
+                    <small style="color: white;">2KM away</small>
+                </div>
+            </article>
+            <article class="post">
+                <div class="post-thumbnail">
+                    <img src="doctor.jpg" alt="">
+                </div>
+                <div class="post-info">
+                    <h3>
+                        <a href="post.html">Dr. John Almasi</a>
+                    </h3>
+                    <a href="" class="category-button">Dentist</a>
+                    <small style="color: white;">2KM away</small>
+                </div>
+            </article>
+            <article class="post">
+                <div class="post-thumbnail">
+                    <img src="doctor.jpg" alt="">
+                </div>
+                <div class="post-info">
+                    <h3>
+                        <a href="post.html">Dr. John Almasi</a>
+                    </h3>
+                    <a href="" class="category-button">Dentist</a>
+                    <small style="color: white;">2KM away</small>
+                </div>
+            </article>
+            <article class="post">
+                <div class="post-thumbnail">
+                    <img src="doctor.jpg" alt="">
+                </div>
+                <div class="post-info">
+                    <h3>
+                        <a href="post.html">Dr. John Almasi</a>
+                    </h3>
+                    <a href="" class="category-button">Dentist</a>
+                    <small style="color: white;">2KM away</small>
+                </div>
+            </article>
+
+        </div>
+    </section>
+    <button id="chatbot-button" onclick="toggleChatbot()">🤖</button>
+
+    <!-- Chatbot container (hidden by default) -->
+    <div id="chatbot-container">
+        <div id="chat-messages"></div>
+        <div id="user-input">
+            <input type="text" id="message-input" placeholder="Type your message">
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleChatbot() {
+            var chatbotContainer = document.getElementById('chatbot-container');
+            chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function sendMessage() {
+            var userInput = document.getElementById('message-input').value;
+            var chatMessages = document.getElementById('chat-messages');
+
+            // Create a new user message element
+            var userMessageElement = document.createElement('div');
+            userMessageElement.className = 'message';
+            userMessageElement.innerHTML = `<strong>You:</strong> ${userInput}`;
+
+            // Append the new user message to the chat
+            chatMessages.appendChild(userMessageElement);
+
+            // Send the user message to the server
+            fetch('/get_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userInput }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Create a new bot response element
+                    var botResponseElement = document.createElement('div');
+                    botResponseElement.className = 'message';
+                    botResponseElement.innerHTML = `<strong>Bot:</strong> ${data.response}`;
+
+                    // Append the new bot response to the chat
+                    chatMessages.appendChild(botResponseElement);
+                });
+
+            // Clear the input field
+            document.getElementById('message-input').value = '';
+        }
+    </script>
+
+
+    <section class="category-buttons">
+        <div class="container category-buttons-container">
+            <a href="" class="category-button">General Physician</a>
+            <a href="" class="category-button">Dentist</a>
+            <a href="" class="category-button">Cardiologist</a>
+            <a href="" class="category-button">Psychologist</a>
+            <a href="" class="category-button">Surgeon</a>
+
+        </div>
+    </section>
+
+
+
+
+    <footer>
+
+        <div class="footer-copyright">
+            <small>Copyright &copy; 2023 Blog
+        </div>
+    </footer>
+    <script src="./main.js"></script>
+</body>
+
+</html>

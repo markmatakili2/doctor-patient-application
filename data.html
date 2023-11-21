@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor-Patient Application - Medical History</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="datastyle.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">DPA</a>
+            <ul class="nav-items">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="data.html">Data</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="services.html">Message</a></li>
+                <li><a href="contact.html">Events</a></li>
+                <li><a href="signin.html">Reminders</a></li>
+                <li class="nav-profile">
+                    <div class="avatar">
+                        <img src="doctor.jpg" alt="">
+                    </div>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout.html">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open_nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close_nav-btn"><i class="uil uil-multiply "></i></button>
+        </div>
+    </nav>
+
+
+
+
+    <body>
+        <section class="data">
+            <div class="container1">
+                <h1 style="color: black;">Medical History</h1>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Symptoms</th>
+                        <th>Diagnosis</th>
+                        <th>Treatment</th>
+                        <th>Share</th>
+                    </tr>
+                    <tr>
+                        <td>2023-10-15</td>
+                        <td>Fever, Headache</td>
+                        <td>Common cold</td>
+                        <td>Rest and fluids</td>
+                        <td><button class="share-button" onclick="shareMedicalHistory('2023-10-15')">Share</button></td>
+                    </tr>
+                    <tr>
+                        <td>2023-09-22</td>
+                        <td>Chest pain</td>
+                        <td>Acid reflux</td>
+                        <td>Antacids, dietary changes</td>
+                        <td><button class="share-button" onclick="shareMedicalHistory('2023-09-22')">Share</button></td>
+                    </tr>
+                </table>
+                <div class="data-section">
+                    <h2 style="color: black;">Latest Data</h2>
+                    <table class="data-table">
+                        <tr>
+                            <th>Date</th>
+                            <th>Weight (kg)</th>
+                            <th>Blood Pressure</th>
+                            <th>Temperature (°C)</th>
+                            <th>Latest Results</th>
+                            <th>Share</th>
+                        </tr>
+                        <tr>
+                            <td>2023-10-19</td>
+                            <td>68.5</td>
+                            <td>120/80 mmHg</td>
+                            <td>36.5</td>
+                            <td>Normal</td>
+                            <td><button class="share-button" onclick="shareLatestData('2023-10-19')">Share</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function shareMedicalHistory(date) {
+                // Implement the logic to share the medical history for the specified date
+                alert("Medical history for " + date + " shared successfully!");
+            }
+
+            function shareLatestData(date) {
+                // Implement the logic to share the latest data for the specified date
+                alert("Latest data for " + date + " shared successfully!");
+            }
+        </script>
+    </body>
+    <footer>
+
+        <div class="footer-copyright">
+            <small>Copyright &copy; 2023 Blog
+        </div>
+    </footer>
+
+</html>
