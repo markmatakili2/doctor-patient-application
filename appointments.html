@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog site</title>
+    <title>Doctor-Patient application</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
@@ -101,6 +101,59 @@
             </main>
         </div>
     </section>
+    <button id="chatbot-button" onclick="toggleChatbot()">🤖</button>
+
+    <!-- Chatbot container (hidden by default) -->
+    <div id="chatbot-container">
+        <div id="chat-messages"></div>
+        <div id="user-input">
+            <input type="text" id="message-input" placeholder="Type your message">
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleChatbot() {
+            var chatbotContainer = document.getElementById('chatbot-container');
+            chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function sendMessage() {
+            var userInput = document.getElementById('message-input').value;
+            var chatMessages = document.getElementById('chat-messages');
+
+            // Create a new user message element
+            var userMessageElement = document.createElement('div');
+            userMessageElement.className = 'message';
+            userMessageElement.innerHTML = `<strong>You:</strong> ${userInput}`;
+
+            // Append the new user message to the chat
+            chatMessages.appendChild(userMessageElement);
+
+            // Send the user message to the server
+            fetch('/get_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userInput }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Create a new bot response element
+                    var botResponseElement = document.createElement('div');
+                    botResponseElement.className = 'message';
+                    botResponseElement.innerHTML = `<strong>Bot:</strong> ${data.response}`;
+
+                    // Append the new bot response to the chat
+                    chatMessages.appendChild(botResponseElement);
+                });
+
+            // Clear the input field
+            document.getElementById('message-input').value = '';
+        }
+    </script>
+
 
 
     <footer>
