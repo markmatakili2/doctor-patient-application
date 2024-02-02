@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog site</title>
+    <title>Doctor-Patient application</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
@@ -15,18 +15,14 @@
 <body>
     <nav>
         <div class="container nav-container">
-            <a href="index.html" class="nav-logo">DPA</a>
+            <a href="index.html" class="nav-logo"><img src="uplogo.png" alt=""></a>
             <ul class="nav-items">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="signin.html">Sign in</a></li>
+
                 <div class="avatar">
                     <img src="istockphoto.jpg" alt="">
                 </div>
                 <ul>
-                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="admin.html">Dashboard</a></li>
                     <li><a href="logout.html">Log out</a></li>
                 </ul>
                 </li>
@@ -53,13 +49,7 @@
                             <h5>Doctor registration</h5>
                         </a></li>
 
-                    <li><a href="add-user.html"><i class=" uil-user-plus"></i>
-                            <h5>Add Doctor</h5>
-                        </a></li>
 
-                    <li><a href="manage-users.html "><i class=" uil-users-alt"></i>
-                            <h5>manage users</h5>
-                        </a></li>
 
                     <li><a href="add-category.html"><i class=" uil-edit"></i>
                             <h5>Add Doctor category</h5>
@@ -76,31 +66,31 @@
                 <table style="color: azure;">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>ID</th>
                             <th>Category</th>
                             <th>Licence number</th>
                             <th>Add</th>
-                            <th>Delete</th>
+                            <th>Revoke</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>John Almasi</td>
+                            <td>92829</td>
                             <td>Dentist</td>
                             <td>ABCD1234EFGH5678
                             </td>
                             <td><a href="add-user.html" class="btn sn">Add</a></td>
-                            <td><a href="delete-category.html" class="btn sn danger">Delete</a></td>
+                            <td><a href="delete-category.html" class="btn sn danger">Revoke</a></td>
 
                         </tr>
                         <tr>
-                            <td>Steve Abdon</td>
+                            <td>243645</td>
                             <td>General DoctorS</td>
                             <td>IENS1234EFGH59374
                             </td>
                             <td><a href="add-user.html" class="btn sn">Add</a></td>
-                            <td><a href="delete-category.html" class="btn sn danger">Delete</a></td>
+                            <td><a href="delete-category.html" class="btn sn danger">Revoke</a></td>
 
                         </tr>
 
