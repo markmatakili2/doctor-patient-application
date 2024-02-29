@@ -3,173 +3,65 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor-Patient Messaging Platform</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+    <title>Doctor Patient application</title>
+    <link rel="stylesheet" href="style.css">
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        #contactsContainer {
-            margin-bottom: 20px;
-        }
-
-        .contact {
-            cursor: pointer;
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #eee;
-        }
-
-        .contact.selected {
-            background-color: #ddd;
-        }
-
-        #inboxContainer,
-        #profileContainer {
-            display: none;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        #profileContainer img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Doctor-Patient Messaging</h1>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo"><img src="uplogo.png" alt=""></a>
+            <ul class="nav-items">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="data.html">Data</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="message.html" class="active">Message</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="Reminders.html">Reminders</a></li>
 
-        <!-- Contacts Section -->
-        <div id="contactsContainer">
-            <div class="contact" onclick="startConversation('Doctor John')">Doctor John</div>
-            <div class="contact" onclick="startConversation('Doctor Almasi')">Doctor Almasi</div>
+                <li class="nav-profile">
+                    <div class="avatar">
+                        <img src="doctor.jpg" alt="">
+                    </div>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="index.html">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open_nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close_nav-btn"><i class="uil uil-multiply "></i></button>
         </div>
+    </nav>
 
-        <!-- Inbox Section -->
-        <div id="inboxContainer">
-            <h2>Inbox</h2>
-            <div id="messagesContainer"></div>
-
-            <!-- Message Form -->
-            <form id="messageForm">
-                <label for="message">Type your message:</label>
-                <textarea id="message" name="message" rows="3" required></textarea>
-                <button type="button" onclick="sendMessage()">Send Message</button>
-            </form>
-
-            <!-- Back Button -->
-            <button onclick="goBack()">Back to Contacts</button>
+    <body>
+        <div class="container2">
+          <div class="user-list">
+            <h2>User List</h2>
+            <ul id="user-list">
+              <li onclick="selectUser('Dr. John')">Dr. John</li>
+              <li onclick="selectUser('Dr. Almasi')">Dr. Almasi</li>
+              <li onclick="selectUser('Dr. Maya')">Dr. Maya</li>
+            </ul>
+          </div>
+          <div class="chat-box" id="chat-box">
+            <h2></h2>
+          </div>
         </div>
+    
+        
+ 
 
-        <!-- Doctor Profile Section -->
-        <div id="profileContainer">
-            <h2>Doctor Profile</h2>
-            <img src="" alt="Doctor Image" id="doctorImage">
-            <p id="doctorInfo"></p>
-
-            <!-- Back Button -->
-            <button onclick="goBack()">Back to Contacts</button>
+        <div class="container3">
+           <input type="text" id="message-input" placeholder="Type a message...">
+           <button id="send-btn" onclick="sendMessage()">Send</button>
         </div>
-    </div>
-
-    <script>
-        let currentDoctor = null;
-
-        function startConversation(doctorName) {
-            currentDoctor = doctorName;
-
-            // Hide contacts, show inbox
-            document.getElementById('contactsContainer').style.display = 'none';
-            document.getElementById('inboxContainer').style.display = 'block';
-            document.getElementById('profileContainer').style.display = 'none';
-
-            document.getElementById('messagesContainer').innerHTML = `<p>Conversation with ${doctorName}</p>`;
-            updateSelectedContact(doctorName);
-        }
-
-        function updateSelectedContact(doctorName) {
-            const contacts = document.querySelectorAll('.contact');
-            contacts.forEach(contact => {
-                contact.classList.remove('selected');
-                if (contact.textContent === doctorName) {
-                    contact.classList.add('selected');
-                }
-            });
-        }
-
-        function viewProfile() {
-            // Hide contacts, show profile
-            document.getElementById('contactsContainer').style.display = 'none';
-            document.getElementById('inboxContainer').style.display = 'none';
-            document.getElementById('profileContainer').style.display = 'block';
-
-            // Display doctor profile information (replace with actual data)
-            const doctorInfo = getDoctorInfo(currentDoctor);
-            document.getElementById('doctorImage').src = doctorInfo.image;
-            document.getElementById('doctorInfo').textContent = doctorInfo.info;
-        }
-
-        function goBack() {
-            // Show contacts, hide inbox and profile
-            document.getElementById('contactsContainer').style.display = 'block';
-            document.getElementById('inboxContainer').style.display = 'none';
-            document.getElementById('profileContainer').style.display = 'none';
-        }
-
-        function getDoctorInfo(doctorName) {
-            // Simulated doctor data (replace with actual data)
-            if (doctorName === 'Doctor John') {
-                return {
-                    image: 'doctor_john.jpg',
-                    info: 'Dr. John specializes in Cardiology. He has 15 years of experience in treating heart-related conditions.'
-                };
-            } else if (doctorName === 'Doctor Almasi') {
-                return {
-                    image: 'doctor_almasi.jpg',
-                    info: 'Dr. Almasi is an Orthopedic Surgeon. She has expertise in musculoskeletal disorders and performs orthopedic surgeries.'
-                };
-            }
-            // Add more doctors as needed
-            return {};
-        }
-
-        function sendMessage() {
-            const messageForm = document.getElementById('messageForm');
-            const messageInput = document.getElementById('message');
-            const messagesContainer = document.getElementById('messagesContainer');
-
-            // Get the message text
-            const messageText = messageInput.value;
-
-            // Check if the message is not empty
-            if (messageText.trim() === '') {
-                alert('Please enter a message.');
-                return;
-            }
-
-            // Create a new message element
-            const messageElement = document.createElement('div');
-            messageElement.className = 'message';
-            messageElement.textContent = messageText;
-
-            // Add the message to the messages container
-            messagesContainer.appendChild(messageElement);
-
-            // Clear the input field
-            messageInput.value = '';
-        }
-    </script>
-</body>
-
+        <script src="main.js"></script>
+    </body>
 </html>

@@ -21,19 +21,19 @@
             <a href="index.html" class="nav-logo"><img src="uplogo.png" alt=""></a>
             <ul class="nav-items">
                 <li><a href="home.html">Home</a></li>
-                <li><a href="data.html">Data</a></li>
+                <li><a href="data.html" class="active">Data</a></li>
                 <li><a href="appointments.html">Appointments</a></li>
                 <li><a href="message.html">Message</a></li>
-                <li><a href="contact.html">Events</a></li>
-                <li><a href="signin.html">Reminders</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="Reminders.html">Reminders</a></li>
 
                 <li class="nav-profile">
                     <div class="avatar">
                         <img src="doctor.jpg" alt="">
                     </div>
                     <ul>
-                        <li><a href="dashboard.html">Dashboard</a></li>
-                        <li><a href="logout.html">Log out</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="index.html">Log out</a></li>
                     </ul>
                 </li>
             </ul>
@@ -55,6 +55,7 @@
                         <th>Symptoms</th>
                         <th>Diagnosis</th>
                         <th>Treatment</th>
+                        <th>Details</th>
                         <th>Share</th>
                     </tr>
                     <tr>
@@ -62,6 +63,7 @@
                         <td>Fever, Headache</td>
                         <td>Common cold</td>
                         <td>Rest and fluids</td>
+                        <td><a href="datdetails.html"><button>More</button></a></td>
                         <td><button class="share-button" onclick="shareMedicalHistory('2023-10-15')">Share</button></td>
                     </tr>
                     <tr>
@@ -69,6 +71,7 @@
                         <td>Chest pain</td>
                         <td>Acid reflux</td>
                         <td>Antacids, dietary changes</td>
+                        <td><a href="datdetails.html"><button>More</button></a></td>
                         <td><button class="share-button" onclick="shareMedicalHistory('2023-09-22')">Share</button></td>
                     </tr>
                 </table>
@@ -80,7 +83,7 @@
                             <th>Weight (kg)</th>
                             <th>Blood Pressure</th>
                             <th>Temperature (°C)</th>
-                            <th>Latest Results</th>
+                            <th>SPO2</th>
                             <th>Share</th>
                         </tr>
                         <tr>
@@ -88,7 +91,7 @@
                             <td>68.5</td>
                             <td>120/80 mmHg</td>
                             <td>36.5</td>
-                            <td>Normal</td>
+                            <td>93</td>
                             <td><button class="share-button" onclick="shareLatestData('2023-10-19')">Share</button></td>
                         </tr>
                     </table>
@@ -107,12 +110,7 @@
                 alert("Latest data for " + date + " shared successfully!");
             }
         </script>
+        
     </body>
-    <footer>
-
-        <div class="footer-copyright">
-            <small>Copyright &copy; 2023 Blog
-        </div>
-    </footer>
-
+    
 </html>

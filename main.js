@@ -40,3 +40,35 @@ const hideSidebar = () => {
 
 showSidebarBtn.addEventListener('click', showSidebar);
 hideSidebarBtn.addEventListener('click', hideSidebar);
+
+
+function selectUser(userId) {
+    // Replace this with code to fetch user's chat history based on userId
+    // For demo purpose, just displaying a placeholder message
+    document.getElementById('chat-box').innerHTML = `<h2>${userId}</h2>`;
+  }
+
+  function sendMessage() {
+    const messageInput = document.getElementById('message-input');
+    const message = messageInput.value.trim();
+    if (message === '') return;
+
+    // Replace this with code to send message to selected user
+    // For demo purpose, just displaying sent message in chat box
+    const chatBox = document.getElementById('chat-box');
+    const newMessage = `
+      <div class="message sent">
+        ${message}
+        <div class="time">${getCurrentTime()}</div>
+      </div>
+    `;
+    chatBox.innerHTML += newMessage;
+
+    messageInput.value = '';
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  function getCurrentTime() {
+    const now = new Date();
+    return `${now.getHours()}:${now.getMinutes()}`;
+  }

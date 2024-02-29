@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <style>
+    body, html {
+      width: 80%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0f0f3e;
+    }
+    .container {
+      width: 80%;
+      background-color: #f0f0f0;
+    }
+    .header {
+      background-color: #6f6af8;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .profile-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    .profile-info img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    .details {
+      padding: 20px;
+    }
+    .settings {
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #0f0f3e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    ul {
+      list-style: square;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="profile-actions">
+        <button class="button">Log out</button>
+      </div>
+      
+      <div class="wallet-button">
+        <button class="button">Wallet</button>
+      </div>
+    </div>
+
+    <div class="profile-info">
+      <div class="user-icon">
+        <img src="download.jpg" alt="User Icon">
+        <div class="profile-actions">
+          <button class="button">Change Profile</button>
+        </div>
+       
+      </div>
+      <div class="user-details">
+        <p><strong>User ID:</strong> 123456789</p>
+        <p><strong>Username:</strong> JohnDoe123</p>
+      </div>
+      <div class="profile-actions">
+        <button class="button">Verify</button>
+      </div>
+    </div>
+
+    <div class="details">
+      <h2>User Details</h2>
+      <p><b>Age:</b>27</p>
+      <p><b>Sex:</b>Female</p>
+    </div>
+
+    <div class="settings">
+      <h2>Settings</h2>
+      <ul>
+        <li><a href="#">Change username</a></li>
+        <li><a href="#">Change Password</a></li>
+        <li><a href="#">Privacy Settings</a></li>
+        <!-- Add more settings as needed -->
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
